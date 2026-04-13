@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: terraria-config
+  namespace: terraria
+data:
+  WORLD: /config/Worlds/champagne.wld
+  WORLDNAME: champagne
+  MAXPLAYERS: "8"
+  PORT: "7777"
+  MOTD: "Bienvenue sur ChampagneDevOps Terraria !"
+  WORLDSIZE: "2"
+  DIFFICULTY: "0"
+  AUTOCREATE: "2"
