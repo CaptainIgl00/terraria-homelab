@@ -4,11 +4,16 @@ metadata:
   name: terraria-config
   namespace: terraria
 data:
-  WORLD: /config/Worlds/champagne.wld
-  WORLDNAME: champagne
+  # linuxserver/terraria env vars
+  PUID: "1000"
+  PGID: "1000"
+  TZ: "Europe/Paris"
+  WORLDNAME: "champagne"
+  WORLD: "/config/Worlds/champagne.wld"
   MAXPLAYERS: "8"
   PORT: "7777"
   MOTD: "Bienvenue sur ChampagneDevOps Terraria !"
   WORLDSIZE: "2"
   DIFFICULTY: "0"
   AUTOCREATE: "2"
+  UPDATEPUBLICIP: "true"

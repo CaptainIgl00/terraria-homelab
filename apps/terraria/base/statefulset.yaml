@@ -21,13 +21,12 @@ spec:
 
       containers:
         - name: terraria
-          image: beardedio/terraria:latest
+          # linuxserver/terraria : image s6-overlay, PUID/PGID, non-root ready
+          image: lscr.io/linuxserver/terraria:latest
           imagePullPolicy: IfNotPresent
           securityContext:
             allowPrivilegeEscalation: false
             privileged: false
-            capabilities:
-              drop: ["ALL"]
           ports:
             - containerPort: 7777
               name: game
@@ -47,12 +46,12 @@ spec:
           readinessProbe:
             tcpSocket:
               port: 7777
-            initialDelaySeconds: 30
+            initialDelaySeconds: 60
             periodSeconds: 15
           livenessProbe:
             tcpSocket:
               port: 7777
-            initialDelaySeconds: 60
+            initialDelaySeconds: 90
             periodSeconds: 30
           volumeMounts:
             - name: data
