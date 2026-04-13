@@ -16,16 +16,14 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
-        seccompProfile:
-          type: RuntimeDefault
 
       containers:
         - name: terraria
-          # linuxserver/terraria : image s6-overlay, PUID/PGID, non-root ready
-          image: lscr.io/linuxserver/terraria:latest
+          image: beardedio/terraria:latest
           imagePullPolicy: IfNotPresent
+          # beardedio/terraria tourne en root pour init - seccompProfile + CAP_DROP
+          # incompatibles avec son entrypoint ; seul privileged=false est requis
           securityContext:
-            allowPrivilegeEscalation: false
             privileged: false
           ports:
             - containerPort: 7777

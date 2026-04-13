@@ -23,11 +23,6 @@ spec:
     spec:
       containers:
         - name: terraria
-          securityContext:
-            allowPrivilegeEscalation: false
-            privileged: false
-            capabilities:
-              drop: ["ALL"]
           resources:
             requests:
               cpu: "500m"
