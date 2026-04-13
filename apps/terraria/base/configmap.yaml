@@ -1,15 +1,19 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: terraria-config
+  name: terraria-serverconfig
   namespace: terraria
 data:
-  # beardedio/terraria env vars (serverconfig.txt keys)
-  WORLD: "/config/Worlds/champagne.wld"
-  WORLDNAME: "champagne"
-  MAXPLAYERS: "8"
-  PORT: "7777"
-  MOTD: "Bienvenue sur ChampagneDevOps Terraria !"
-  WORLDSIZE: "2"
-  DIFFICULTY: "0"
-  AUTOCREATE: "2"
+  serverconfig.txt: |
+    world=/config/Worlds/champagne.wld
+    worldname=champagne
+    autocreate=2
+    difficulty=0
+    maxplayers=8
+    port=7777
+    motd=Bienvenue sur ChampagneDevOps Terraria !
+    language=fr-FR
+    upnp=0
+    npcstream=60
+    priority=1
+    worldrollbackstokeep=2

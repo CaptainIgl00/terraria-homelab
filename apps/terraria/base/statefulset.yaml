@@ -21,19 +21,23 @@ spec:
         - name: terraria
           image: beardedio/terraria:latest
           imagePullPolicy: IfNotPresent
-          # beardedio/terraria tourne en root pour init - seccompProfile + CAP_DROP
-          # incompatibles avec son entrypoint ; seul privileged=false est requis
+          # beardedio/terraria run en root lors de l'init
           securityContext:
             privileged: false
+          # Le password est passé en CLI arg depuis le secret
+          args:
+            - "-pass"
+            - "$(PASSWORD)"
           ports:
             - containerPort: 7777
               name: game
               protocol: TCP
-          envFrom:
-            - configMapRef:
-                name: terraria-config
-            - secretRef:
-                name: terraria-secret
+          env:
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: terraria-secret
+                  key: PASSWORD
           resources:
             requests:
               cpu: "250m"
@@ -54,8 +58,14 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /config
+            - name: serverconfig
+              mountPath: /config/serverconfig.txt
+              subPath: serverconfig.txt
 
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: terraria-data
+        - name: serverconfig
+          configMap:
+            name: terraria-serverconfig
