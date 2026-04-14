@@ -5,7 +5,7 @@ metadata:
   namespace: terraria
 data:
   serverconfig.txt: |
-    worldname=champagne
+    worldname=pipicaca
     autocreate=2
     difficulty=0
     maxplayers=8
