@@ -5,6 +5,7 @@ metadata:
   namespace: terraria
 data:
   serverconfig.txt: |
+    world=/config/pipicaca.wld
     worldname=pipicaca
     autocreate=2
     difficulty=0
