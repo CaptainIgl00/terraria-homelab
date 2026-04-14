@@ -38,6 +38,9 @@ spec:
                 secretKeyRef:
                   name: terraria-secret
                   key: PASSWORD
+            # run.sh lit cette var et ajoute -world /config/$world au lancement
+            - name: world
+              value: "pipicaca.wld"
           resources:
             requests:
               cpu: "250m"
